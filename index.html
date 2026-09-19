@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Z-Facilities</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Z-Facilities</div>
+    <div class="subtitle">Medical Device Management</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="searchView">
+    <div class="card hero">
+      <h1>Equipment Search</h1>
+      <p>Search by Asset #, Serial #, Model, Manufacturer, or Equipment Type.</p>
+      <div class="searchRow">
+        <input id="searchInput" placeholder="e.g. C224562 or LIFEPAK 15" autocomplete="off">
+        <button id="searchBtn">Search</button>
+      </div>
+    </div>
+    <div id="resultsCard" class="card hidden">
+      <h2>Search Results</h2>
+      <div id="results"></div>
+    </div>
+  </section>
+
+  <section id="deviceView" class="hidden">
+    <button class="linkBtn" id="backSearch">← Back to Equipment Search</button>
+    <div class="card">
+      <div class="deviceTop">
+        <div>
+          <div class="eyebrow">Equipment Record</div>
+          <h1 id="deviceTitle"></h1>
+        </div>
+        <span id="deviceStatus" class="badge"></span>
+      </div>
+      <div id="deviceDetails" class="details"></div>
+      <div class="actions">
+        <button id="newWO">Create Work Order</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Service History</h2>
+      <div id="history"></div>
+    </div>
+  </section>
+
+  <section id="workorderView" class="hidden">
+    <button class="linkBtn" id="backDevice">← Back to Equipment Record</button>
+    <div class="card">
+      <div class="eyebrow">New Service Record</div>
+      <h1>Create Work Order</h1>
+      <p id="woDevice"></p>
+      <form id="woForm">
+        <div class="formGrid">
+          <label>Work Order #
+            <input id="woNumber" readonly>
+          </label>
+          <label>Service Type
+            <select id="woType" required>
+              <option value="PM">PM - Preventive Maintenance</option>
+              <option value="DM">DM - Demand Maintenance</option>
+            </select>
+          </label>
+          <label>Date
+            <input id="woDate" type="date" required>
+          </label>
+          <label>Biomed / Student
+            <input id="woBiomed" required>
+          </label>
+        </div>
+        <label>Problem / Service Description
+          <textarea id="woDescription" required></textarea>
+        </label>
+        <label>Work Performed
+          <textarea id="woWork"></textarea>
+        </label>
+        <label>Status
+          <select id="woStatus">
+            <option>Open</option>
+            <option>Closed</option>
+            <option>Waiting for Parts</option>
+          </select>
+        </label>
+        <div class="actions">
+          <button type="submit">Save Work Order</button>
+          <button type="button" class="secondary" id="cancelWO">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
